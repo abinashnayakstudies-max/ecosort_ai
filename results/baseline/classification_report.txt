@@ -1,0 +1,10 @@
+              precision    recall  f1-score   support
+
+         dry     0.9029    0.7324    0.8088      1181
+         wet     0.7033    0.8767    0.7805       146
+  recyclable     0.6588    0.8626    0.7471       779
+     e_waste     0.8707    0.7799    0.8228       518
+
+    accuracy                         0.7885      2624
+   macro avg     0.7839    0.8129    0.7898      2624
+weighted avg     0.8130    0.7885    0.7917      2624

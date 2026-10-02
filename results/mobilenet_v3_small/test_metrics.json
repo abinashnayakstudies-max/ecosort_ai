@@ -1,0 +1,68 @@
+{
+  "run": "mobilenet_v3_small",
+  "model": "mobilenet_v3_small",
+  "augment": true,
+  "n_test": 2624,
+  "test_set_fingerprint": "e24e016eac428d74",
+  "accuracy": 0.9798018292682927,
+  "macro_precision": 0.9725491324762582,
+  "macro_recall": 0.984865342580677,
+  "macro_f1": 0.9785096892968054,
+  "weighted_f1": 0.9798349891845838,
+  "per_class": {
+    "dry": {
+      "precision": 0.9905417024935511,
+      "recall": 0.9754445385266723,
+      "f1": 0.9829351535836177,
+      "support": 1181
+    },
+    "wet": {
+      "precision": 0.948051948051948,
+      "recall": 1.0,
+      "f1": 0.9733333333333334,
+      "support": 146
+    },
+    "recyclable": {
+      "precision": 0.9670468948035488,
+      "recall": 0.9794608472400513,
+      "f1": 0.9732142857142857,
+      "support": 779
+    },
+    "e_waste": {
+      "precision": 0.9845559845559846,
+      "recall": 0.9845559845559846,
+      "f1": 0.9845559845559846,
+      "support": 518
+    }
+  },
+  "confusion_matrix": [
+    [
+      1152,
+      5,
+      22,
+      2
+    ],
+    [
+      0,
+      146,
+      0,
+      0
+    ],
+    [
+      7,
+      3,
+      763,
+      6
+    ],
+    [
+      4,
+      0,
+      4,
+      510
+    ]
+  ],
+  "params": 1521956,
+  "size_mb": 6.21,
+  "cpu_latency_ms": 12.0,
+  "best_val_macro_f1": 0.978037900078429
+}

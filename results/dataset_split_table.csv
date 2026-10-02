@@ -1,0 +1,5 @@
+label,train,val,test,total
+dry,5509,1181,1181,7871
+wet,683,146,146,975
+recyclable,3636,779,779,5194
+e_waste,2414,518,518,3450

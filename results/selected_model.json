@@ -1,0 +1,9 @@
+{
+  "run": "resnet18",
+  "checkpoint": "checkpoints/resnet18/best.pt",
+  "rule": "highest validation macro-F1 among models with <= 200 ms/img and <= 100 MB",
+  "limits": {
+    "max_ms": 200,
+    "max_mb": 100
+  }
+}

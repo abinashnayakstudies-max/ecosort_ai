@@ -1,0 +1,68 @@
+{
+  "run": "baseline_smoke",
+  "model": "baseline",
+  "augment": true,
+  "n_test": 2624,
+  "test_set_fingerprint": "e24e016eac428d74",
+  "accuracy": 0.2073170731707317,
+  "macro_precision": 0.17505854800936768,
+  "macro_recall": 0.3006690643676945,
+  "macro_f1": 0.15779845154845157,
+  "weighted_f1": 0.08234518910967083,
+  "per_class": {
+    "dry": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 1181
+    },
+    "wet": {
+      "precision": 0.5,
+      "recall": 0.21232876712328766,
+      "f1": 0.2980769230769231,
+      "support": 146
+    },
+    "recyclable": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 779
+    },
+    "e_waste": {
+      "precision": 0.20023419203747073,
+      "recall": 0.9903474903474904,
+      "f1": 0.33311688311688314,
+      "support": 518
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      17,
+      0,
+      1164
+    ],
+    [
+      0,
+      31,
+      0,
+      115
+    ],
+    [
+      0,
+      9,
+      0,
+      770
+    ],
+    [
+      0,
+      5,
+      0,
+      513
+    ]
+  ],
+  "params": 390404,
+  "size_mb": 1.58,
+  "cpu_latency_ms": 55.0,
+  "best_val_macro_f1": 0.15744060959211115
+}

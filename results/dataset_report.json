@@ -1,0 +1,40 @@
+{
+  "images_per_class": {
+    "dry": 7871,
+    "wet": 975,
+    "recyclable": 5194,
+    "e_waste": 3450
+  },
+  "split_table": {
+    "dry": {
+      "train": 5509,
+      "val": 1181,
+      "test": 1181,
+      "total": 7871
+    },
+    "wet": {
+      "train": 683,
+      "val": 146,
+      "test": 146,
+      "total": 975
+    },
+    "recyclable": {
+      "train": 3636,
+      "val": 779,
+      "test": 779,
+      "total": 5194
+    },
+    "e_waste": {
+      "train": 2414,
+      "val": 518,
+      "test": 518,
+      "total": 3450
+    }
+  },
+  "unreadable_or_tiny_removed": 1,
+  "exact_duplicates_removed": 2413,
+  "near_duplicates_removed": 610,
+  "label_conflict_images_removed": 528,
+  "seed": 42,
+  "hash_threshold": 4
+}
