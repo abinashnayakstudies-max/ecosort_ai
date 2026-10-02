@@ -58,28 +58,50 @@ def load_image_safe(source, filename=None, max_mb=15) -> Image.Image:
 
 
 def load_checkpoint(path=None, device="cpu"):
-    """Returns (model, meta). If path is None uses results/selected_model.json, else first checkpoint."""
+    """Returns (model, meta). Uses the project-root best.pt when no checkpoint is specified."""
     if path is None:
-        sel = RESULTS_DIR / "selected_model.json"
-        if sel.exists():
-            path = Path(json.loads(sel.read_text())["checkpoint"])
-            if not path.is_absolute():
-                path = ROOT / path            # stored relative to the project root
-        else:
-            found = sorted(CKPT_DIR.glob("*/best.pt"))
-            if not found:
-                raise FileNotFoundError("No trained model found. Run: python src/train.py --model resnet18")
-            path = found[0]
-    ck = torch.load(path, map_location=device, weights_only=False)
-    model = build_model(ck["model_name"], pretrained=False)   # architecture only, weights come from ckpt
-    model.load_state_dict(ck["state_dict"])
-    for p in model.parameters():
-        p.requires_grad = True                                 # Grad-CAM needs gradients
-    model.to(device).eval()
-    meta = {k: ck[k] for k in ["model_name", "class_names", "img_size", "best_val_macro_f1", "augment"] if k in ck}
-    meta["checkpoint"] = str(path)
-    return model, meta
+        root_model = ROOT / "best.pt"
 
+        if root_model.exists():
+            path = root_model
+        else:
+            sel = RESULTS_DIR / "selected_model.json"
+            if sel.exists():
+                path = Path(json.loads(sel.read_text())["checkpoint"])
+                if not path.is_absolute():
+                    path = ROOT / path
+            else:
+                found = sorted(CKPT_DIR.glob("*/best.pt"))
+                if not found:
+                    raise FileNotFoundError(
+                        "No trained model found. Run: python src/train.py --model resnet18"
+                    )
+                path = found[0]
+
+    ck = torch.load(path, map_location=device, weights_only=False)
+    model = build_model(ck["model_name"], pretrained=False)
+    model.load_state_dict(ck["state_dict"])
+
+    for p in model.parameters():
+        p.requires_grad = True
+
+    model.to(device).eval()
+
+    meta = {
+        k: ck[k]
+        for k in [
+            "model_name",
+            "class_names",
+            "img_size",
+            "best_val_macro_f1",
+            "augment",
+        ]
+        if k in ck
+    }
+
+    meta["checkpoint"] = str(path)
+
+    return model, meta
 
 def probabilities_from_logits(logits):
     return F.softmax(logits, dim=1)
